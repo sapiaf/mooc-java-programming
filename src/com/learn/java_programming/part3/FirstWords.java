@@ -2,7 +2,7 @@ package com.learn.java_programming.part3;
 
 import java.util.Scanner;
 
-public class AVClub {
+public class FirstWords {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true){
@@ -11,11 +11,7 @@ public class AVClub {
                 break;
             }
             String[] splitted = str.split(" ");
-            for (String string : splitted) {
-                if (string.contains("av")) {
-                    System.out.println(string);
-                }
-            }
+            System.out.println(splitted[0]);
         }
 
     }
