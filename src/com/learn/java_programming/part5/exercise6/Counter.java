@@ -1,0 +1,37 @@
+package com.learn.java_programming.part5.exercise6;
+
+public class Counter {
+    private int startValue;
+
+    public Counter() {
+        this(0);  // delegates to the other constructor
+    }
+
+    public Counter(int startValue) {
+        this.startValue = startValue;
+    }
+
+    public int value() {
+        return this.startValue;
+    }
+
+    public void increase() {
+        this.startValue++;
+    }
+
+    public void increase(int increaseBy) {
+        if (increaseBy >= 0) {
+            this.startValue += increaseBy;
+        }
+    }
+
+    public void decrease() {
+        this.startValue--;
+    }
+
+    public void decrease(int decreaseBy) {
+        if (decreaseBy >= 0) {
+            this.startValue -= decreaseBy;
+        }
+    }
+}
