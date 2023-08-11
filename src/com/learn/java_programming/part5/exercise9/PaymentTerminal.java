@@ -41,12 +41,10 @@ public class PaymentTerminal {
         // if the payment card has enough money, the balance of the card is decreased by the price, and the method returns true
         // otherwise false is returned
         if (card.balance() >= 2.50) {
-            card.takeMoney(2.50);
             affordableMeals++;
-            return true;
-        } else {
-            return false;
+            return card.takeMoney(2.50);
         }
+        return false;
     }
 
     public boolean eatHeartily(PaymentCard card) {
@@ -54,12 +52,10 @@ public class PaymentTerminal {
         // if the payment card has enough money, the balance of the card is decreased by the price, and the method returns true
         // otherwise false is returned
         if (card.balance() >= 4.30) {
-            card.takeMoney(4.30);
             heartyMeals++;
-            return true;
-        } else {
-            return false;
+            return card.takeMoney(4.30);
         }
+        return false;
     }
 
     public void addMoneyToCard(PaymentCard card, double sum) {
