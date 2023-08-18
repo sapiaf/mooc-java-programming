@@ -10,21 +10,20 @@ public class IndexOf {
         List<Integer> nums = new ArrayList<>();
 
         while (true) {
-            int num = Integer.valueOf(scanner.nextLine());
+            int num = Integer.parseInt(scanner.nextLine());
             if (num == -1) {
                 break;
             }
             nums.add(num);
         }
-        System.out.println("Search for: ");
-        int num = Integer.valueOf(scanner.nextLine());
 
+        System.out.println("Search for: ");
+        int num = Integer.parseInt(scanner.nextLine());
 
         for (int i = 0; i < nums.size(); i++) {
-            if (nums.get(i) == num) {
-                System.out.println(num + " is at index " + i);
-            }
+            if (nums.get(i) == num) System.out.println(num + " is at index " + i);
         }
+
 
     }
 }

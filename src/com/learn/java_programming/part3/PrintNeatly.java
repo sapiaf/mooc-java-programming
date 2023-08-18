@@ -12,7 +12,6 @@ public class PrintNeatly {
             if (i != array.length - 1) {
                 System.out.print(",");
             }
-
         }
     }
 }

@@ -10,12 +10,13 @@ public class Swap {
             System.out.println(num);
         }
         System.out.println("Give two indices to swap: ");
-        int firstIndex = Integer.valueOf(scanner.nextLine());
-        int secondIndex = Integer.valueOf(scanner.nextLine());
+        int firstIndex = Integer.parseInt(scanner.nextLine());
+        int secondIndex = Integer.parseInt(scanner.nextLine());
 
         int helper = numbers[firstIndex];
         numbers[firstIndex] = numbers[secondIndex];
         numbers[secondIndex] = helper;
+
 
         for (int num : numbers) {
             System.out.println(num);
