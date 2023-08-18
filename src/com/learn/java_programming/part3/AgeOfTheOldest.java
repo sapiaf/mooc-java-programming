@@ -10,8 +10,8 @@ public class AgeOfTheOldest {
             String name = scanner.nextLine();
             if (name.isEmpty()) break;
             String[] nomi = name.split(",");
-            if (Integer.valueOf(nomi[1]) > max) {
-                max = Integer.valueOf(nomi[1]);
+            if (Integer.parseInt(nomi[1]) > max) {
+                max = Integer.parseInt(nomi[1]);
             }
         }
         System.out.println("Age of the oldest: " + max);

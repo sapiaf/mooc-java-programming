@@ -6,9 +6,11 @@ public class LineByLine {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
-        String [] array = answer.split(" ");
-        for (String el : array) {
-            System.out.println(el);
+        String[] splitted = answer.split(" ");
+
+        for (String word : splitted) {
+            System.out.println(word);
         }
+
     }
 }

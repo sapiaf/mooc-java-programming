@@ -6,16 +6,16 @@ public class AVClub {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true){
-            String str = scanner.nextLine();
-            if (str.isEmpty()) {
-                break;
+            String sentence = scanner.nextLine();
+
+            if (sentence.isEmpty()) break;
+
+            String[] splitted = sentence.split(" ");
+
+            for (String word : splitted) {
+                if (word.contains("av")) System.out.println(word);
             }
-            String[] splitted = str.split(" ");
-            for (String string : splitted) {
-                if (string.contains("av")) {
-                    System.out.println(string);
-                }
-            }
+
         }
 
     }
