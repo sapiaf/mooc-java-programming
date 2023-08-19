@@ -6,10 +6,10 @@ public class Cubes {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while(true) {
-            String num = scanner.nextLine();
-            if (num.equalsIgnoreCase("end")) break;
-            int numero = Integer.parseInt(num);
-            System.out.println((int)Math.pow(numero, 3));
+            String word = scanner.nextLine();
+            if (word.equalsIgnoreCase("end")) break;
+            int num = Integer.parseInt(word);
+            System.out.println((int)Math.pow(num, 3));
         }
     }
 }
