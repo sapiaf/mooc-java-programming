@@ -1,5 +1,6 @@
 package com.learn.java_programming.part4.exercise24;
 
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -13,8 +14,10 @@ public class PrintingASpecifiedFile {
                 String row = scanner2.nextLine();
                 System.out.println(row);
             }
+        } catch (NoSuchFileException nsfe) {
+            System.out.println("Error: The file " + fileName + " was not found.");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
         }
     }
 }

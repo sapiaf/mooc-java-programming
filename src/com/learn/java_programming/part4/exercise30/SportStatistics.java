@@ -1,5 +1,6 @@
 package com.learn.java_programming.part4.exercise30;
 
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -17,40 +18,41 @@ public class SportStatistics {
         int wins = 0;
         int losses = 0;
 
-        try (Scanner fileSearch = new Scanner(Paths.get("src/com/learn/java_programming/part4/exercise30/" + fileName))) {
-            while (fileSearch.hasNextLine()) {
-                String line = fileSearch.nextLine();
-                String[] splittedLine = line.split(",");
+        try (Scanner sc = new Scanner(Paths.get("src/com/learn/java_programming/part4/exercise30/" + fileName))) {
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine();
+                if (line.isEmpty()) continue;
 
+                String[] splitted = line.split(",");
+                String homeTeam = splitted[0];
+                String awayTeam = splitted[1];
+                int homePoints = Integer.parseInt(splitted[2]);
+                int awayPoints = Integer.parseInt(splitted[3]);
 
-                String homeTeam = splittedLine[0];
-                String awayTeam = splittedLine[1];
-                int homePoints = Integer.parseInt(splittedLine[2]);
-                int awayPoints = Integer.parseInt(splittedLine[3]);
-
-
-                if (teamName.equalsIgnoreCase(homeTeam)) {
-                    gamesCounter++;
+                if (homeTeam.equalsIgnoreCase(teamName)) {
                     if (homePoints > awayPoints) wins++;
                     else losses++;
-                }
-
-                if (teamName.equalsIgnoreCase(awayTeam)) {
                     gamesCounter++;
-                    if (awayPoints > homePoints) wins++;
-                    else losses++;
                 }
 
+                if (awayTeam.equalsIgnoreCase(teamName)) {
+                    if (homePoints < awayPoints) wins++;
+                    else losses++;
+                    gamesCounter++;
+                }
 
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
 
-        if (gamesCounter > 0) {
             System.out.println("Games: " + gamesCounter);
             System.out.println("Wins: " + wins);
             System.out.println("Losses: " + losses);
+
+
+
+        } catch (NoSuchFileException noSuchFileException) {
+            System.out.println("file " + fileName + " not found");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
     }

@@ -13,6 +13,7 @@ public class RecordsFromAFile {
         try (Scanner sc = new Scanner(Paths.get("src/com/learn/java_programming/part4/exercise28/" + fileName))) {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
+                if (line.isEmpty()) continue;
                 String[] parts = line.split(",");
                 String name = parts[0];
                 int year = Integer.parseInt(parts[1]);

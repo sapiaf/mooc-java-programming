@@ -1,5 +1,6 @@
 package com.learn.java_programming.part4.exercise27;
 
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -20,15 +21,16 @@ public class NumbersFromAFile {
 
         try (Scanner scanner2 = new Scanner(Paths.get("src/com/learn/java_programming/part4/exercise27/" + fileName))) {
             while (scanner2.hasNextLine()) {
-                int row = Integer.valueOf(scanner2.nextLine());
-                if (row >= lowerBound && row <= upperBound) counter++;
+                String row = scanner2.nextLine();
+                if (row.isEmpty()) continue;
+                int num = Integer.parseInt(row);
+                if (num >= lowerBound && num <= upperBound) counter++;
             }
+            System.out.println("Numbers: " + counter);
+        } catch (NoSuchFileException noSuchFileException) {
+            System.out.println("file " + fileName + " not found");
         } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-            System.out.println("Reading the file " + fileName + " failed.");
-            return;
+            System.out.println("Error: " + e.getMessage());
         }
-
-        System.out.println("Numbers: " + counter);
     }
 }
