@@ -1,8 +1,8 @@
 package com.learn.java_programming.part5.exercise4;
 
 public class Fitbyte {
-    private int age;
-    private int restingHeartRate;
+    private final int age;
+    private final int restingHeartRate;
 
     public Fitbyte(int age, int restingHeartRate) {
         this.age = age;

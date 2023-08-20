@@ -3,35 +3,28 @@ package com.learn.java_programming.part5.exercise6;
 public class Counter {
     private int startValue;
 
-    public Counter() {
-        this(0);  // delegates to the other constructor
-    }
-
     public Counter(int startValue) {
         this.startValue = startValue;
     }
 
-    public int value() {
+    public Counter() {
+        this(0);
+    }
+
+    public int getStartValue() {
         return this.startValue;
     }
 
     public void increase() {
         this.startValue++;
     }
-
-    public void increase(int increaseBy) {
-        if (increaseBy >= 0) {
-            this.startValue += increaseBy;
-        }
+    public void increase(int amount) {
+        if (amount > 0) this.startValue += amount;
     }
-
     public void decrease() {
         this.startValue--;
     }
-
-    public void decrease(int decreaseBy) {
-        if (decreaseBy >= 0) {
-            this.startValue -= decreaseBy;
-        }
+    public void decrease(int amount) {
+        if (amount > 0) this.startValue -= amount;
     }
 }
