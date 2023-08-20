@@ -10,26 +10,11 @@ public class Book {
         this.name = name;
         this.publicationYear = publicationYear;
     }
-
-    public String getName() {
-        return name;
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Book comparedBook)) return false;
+        return comparedBook.name.equalsIgnoreCase(this.name) && comparedBook.publicationYear == this.publicationYear;
     }
 
-    public int getPublicationYear() {
-        return publicationYear;
-    }
-
-    public boolean equals(Object compared) {
-        if (this == compared) return true;
-
-        if (!(compared instanceof Book)) return false;
-
-        Book otherBook = (Book) compared;
-
-        if (this.name.equals(otherBook.name) && this.publicationYear == otherBook.publicationYear) {
-            return true;
-        }
-        // otherwise, the objects are not the same
-        return false;
-    }
 }

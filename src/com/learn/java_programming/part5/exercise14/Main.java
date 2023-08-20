@@ -6,20 +6,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner (System.in);
-        List<Book> books = new ArrayList<>();
-
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Book> books = new ArrayList<>();
         while (true) {
-            System.out.println("Name (empty will stop): ");
+            System.out.println("Name (empty will stop):");
             String title = scanner.nextLine();
             if (title.isEmpty()) break;
-            System.out.println("Publication year: ");
+            System.out.println("Publication year:");
             int publicationYear = Integer.parseInt(scanner.nextLine());
-
             Book book = new Book(title, publicationYear);
-            if (books.contains(book)) {
-                System.out.println("The book is already on the list. Let's not add the same book again.");
-            } else books.add(book);
+            if (!(books.contains(book))) books.add(book);
+            else System.out.println("The book is already on the list. Let's not add the same book again.");
         }
         System.out.println("Thank you! Books added: " + books.size());
     }

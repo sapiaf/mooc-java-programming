@@ -10,31 +10,10 @@ public class Song {
         this.name = name;
         this.durationInSeconds = durationInSeconds;
     }
-
-    public boolean equals(Object compared){
-        // if the variables are located in the same position, they are equal
-        if (this == compared) {
-            return true;
-        }
-
-        // if the type of the compared object is not song, the objects are not equal
-        if (!(compared instanceof Song)) {
-            return false;
-        }
-
-        // convert the Object type compared object
-        // into a song type object called comparedSimpleDate
-        Song comparedSong = (Song) compared;
-
-        // if the values of the object variables are the same, the objects are equal
-        if (this.artist.equals(comparedSong.artist )&&
-                this.name.equals(comparedSong.name ) &&
-                this.durationInSeconds == comparedSong.durationInSeconds) {
-            return true;
-        }
-
-        // otherwise the objects are not equal
-        return false;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Song comparedSong)) return false;
+        return comparedSong.artist.equals(this.artist) && comparedSong.name.equals(this.name) && comparedSong.durationInSeconds == this.durationInSeconds;
     }
     @Override
     public String toString() {

@@ -1,6 +1,7 @@
 package com.learn.java_programming.part5.exercise17;
 
 public class Money {
+
     private final int euros;
     private final int cents;
 
@@ -16,7 +17,7 @@ public class Money {
     public int cents() {
         return cents;
     }
-
+    @Override
     public String toString() {
         String zero = "";
         if (cents <= 10) {
@@ -27,29 +28,13 @@ public class Money {
     }
 
     public Money plus(Money addition) {
-        int newEuros = euros + addition.euros;
-        int newCents = cents + addition.cents;
-
-        if (newCents >= 100) {
-            newEuros++;
-            newCents -= 100;
-        }
-
-        return new Money(newEuros, newCents);
-    }
-
-    public boolean lessThan(Money compared) {
-        if (this.euros < compared.euros) {
-            return true;
-        } else if (this.euros == compared.euros && this.cents < compared.cents) {
-            return true;
-        }
-        return false;
+        Money newMoney = new Money(this.euros + addition.euros, this.cents + addition.cents);
+        return newMoney;
     }
 
     public Money minus(Money decreaser) {
-        int newEuros = euros - decreaser.euros;
-        int newCents = cents - decreaser.cents;
+        int newEuros = this.euros - decreaser.euros();
+        int newCents = this.cents - decreaser.cents();
 
         if (newCents < 0) {
             newEuros--;
@@ -57,10 +42,25 @@ public class Money {
         }
 
         if (newEuros < 0) {
-            return new Money(0, 0);
+            newEuros = 0;
+            newCents = 0;
         }
 
         return new Money(newEuros, newCents);
     }
+
+    public boolean lessThan(Money compared) {
+        if (this.euros < compared.euros()) {
+            return true;
+        }
+
+        if (this.euros == compared.euros() && this.cents < compared.cents()) {
+            return true;
+        }
+
+        return false;
+    }
+
+
 
 }

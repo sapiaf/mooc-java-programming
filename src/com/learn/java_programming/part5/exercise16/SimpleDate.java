@@ -27,12 +27,7 @@ public class SimpleDate {
         }
 
         // the years and the months are the same, compare days
-        if (this.year == compared.year && this.month == compared.month &&
-                this.day < compared.day) {
-            return true;
-        }
-
-        return false;
+        return this.year == compared.year && this.month == compared.month && this.day < compared.day;
     }
 
     public void advance() {
@@ -46,15 +41,20 @@ public class SimpleDate {
             }
         }
     }
-    public void advance(int howManyDays) {
-        for (int i = 0; i < howManyDays; i++) {
+    public void advance(int numOfDays) {
+        for (int i = 0; i < numOfDays; i++) {
             advance();
         }
     }
 
     public SimpleDate afterNumberOfDays(int days) {
         SimpleDate newDate = new SimpleDate(this.day, this.month, this.year);
-        newDate.advance(days);
+
+        for (int i = 0; i < days; i++) {
+            newDate.advance();
+        }
+
         return newDate;
     }
+
 }
