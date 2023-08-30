@@ -10,37 +10,42 @@ public class UserInterface {
         this.scanner = scanner;
         this.register = register;
     }
+
     public void start() {
         while (true) {
-            System.out.print("Points: ");
+            System.out.println("Points: ");
             String input = scanner.nextLine();
-            if (input.isEmpty()) {
-                break;
+            if (input.isEmpty()) break;
+            try {
+                int points = Integer.parseInt(input);
+                if (points < 0 || points > 100) {
+                    System.out.println("Impossible number");
+                    continue;
+                }
+                register.addGradeBasedOnPoints(points);
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
             }
-
-            int points = Integer.parseInt(input);
-
-            if (points < 0 || points > 100) {
-                System.out.println("Impossible numbers");
-                continue;
-            }
-
-            register.addGradeBasedOnPoints(points);
         }
-
-        for (int i = 5; i >= 0; i--) {
-            System.out.println(i + ": " + stars(i));
-        }
-
-        System.out.println("The average of points is: " + register.averageOfPoints());
-        System.out.println("The average of grades is: " + register.averageOfGrades());
-
+        printGrades();
+        printAverages();
     }
-    public String stars(int grade) {
-        String stars = "";
-        for (int i = 0; i < register.numberOfGrades(grade); i++) {
-            stars += "*";
+
+    private void printGrades() {
+        for (int i = 5; i >= 0; i--) {
+            System.out.println(i + ": " + printStars(i));
         }
-        return stars;
+    }
+
+    private String printStars(int grades) {
+        StringBuilder stars = new StringBuilder();
+        for (int i = 1; i <= register.numberOfGrades(grades); i++) {
+            stars.append("*");
+        }
+        return stars.toString();
+    }
+    private void printAverages() {
+        System.out.println("The average of points: " + register.averageOfPoints());
+        System.out.println("The average of grades: " + register.averageOfGrades());
     }
 }

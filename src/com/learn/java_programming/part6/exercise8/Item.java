@@ -5,18 +5,21 @@ public class Item {
     private int weight;
 
     public Item(String name, int weight) {
+        if (name == null || name.isEmpty()) throw new RuntimeException("Error");
         this.name = name;
         this.weight = weight;
     }
 
     public String getName() {
-        return this.name;
-    }
-    public int getWeight() {
-        return this.weight;
+        return name;
     }
 
+    public int getWeight() {
+        return weight;
+    }
+
+    @Override
     public String toString() {
-        return getName() + " (" + getWeight() + " kg)";
+        return name + " (" + weight + " kg)";
     }
 }

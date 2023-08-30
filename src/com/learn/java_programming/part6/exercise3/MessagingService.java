@@ -12,7 +12,6 @@ public class MessagingService {
             this.messages.add(message);
         }
     }
-
     public ArrayList<Message> getMessages() {
         return this.messages;
     }

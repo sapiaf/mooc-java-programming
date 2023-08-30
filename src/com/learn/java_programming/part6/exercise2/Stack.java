@@ -14,8 +14,8 @@ public class Stack {
         return this.lista;
     }
     public String take() {
-        String taken = this.lista.get(this.lista.size() - 1);
-        this.lista.remove(this.lista.size() - 1);
-        return taken;
+        String lastEl = lista.get(lista.size() - 1);
+        lista.remove(lista.size() - 1);
+        return lastEl;
     }
 }

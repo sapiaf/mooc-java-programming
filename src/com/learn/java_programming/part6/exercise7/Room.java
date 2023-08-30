@@ -8,31 +8,29 @@ public class Room {
     public Room() {
         this.people = new ArrayList<>();
     }
-    public void add(Person person) {
-        this.people.add(person);
-    }
     public boolean isEmpty() {
-        return this.people.isEmpty();
+        return people.isEmpty();
     }
+
+    public void add(Person person) {
+        people.add(person);
+    }
+
     public ArrayList<Person> getPersons() {
-        return this.people;
+        return people;
     }
+
     public Person shortest() {
         if (isEmpty()) return null;
-
-        Person shortest = this.people.get(0);
-
-        for (Person person : this.people) {
-            if (person.getHeight() < shortest.getHeight()) {
-                shortest = person;
-            }
+        Person dwarf = people.get(0);
+        for (Person person : getPersons()) {
+            if (person.getHeight() < dwarf.getHeight()) dwarf = person;
         }
-        return shortest;
+        return dwarf;
     }
     public Person take() {
-        if (isEmpty()) return null;
-        Person shortestPerson = shortest();
-        this.people.remove(shortestPerson);
-        return shortestPerson;
+        Person dwarf = shortest();
+        if (dwarf != null) people.remove(dwarf);
+        return dwarf;
     }
 }

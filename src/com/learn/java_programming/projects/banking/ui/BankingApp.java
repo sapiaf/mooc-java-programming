@@ -27,19 +27,44 @@ public class BankingApp {
     }
 
     private void handleChoice(int choice) {
+        outerSwitch:
+        // This is the label for the outer switch
         switch (choice) {
             case 1:
-                // Logic to create account
-                break;
+                while (true) {
+                    System.out.println("1. Create Saving Account");
+                    System.out.println("2. Create Current Account");
+                    System.out.println("3. Exit");
+                    int choiceOne = InputUtility.readInt();
+                    switch (choiceOne) {
+                        case 1:
+                            // Logic for creating saving account
+                            break;
+                        case 2:
+                            // Logic for creating current account
+                            break;
+                        case 3:
+                            break outerSwitch; // This will break out of the outer switch as well
+
+                    }
+                }
             case 2:
-                // Logic to deposit
-                break;
+                while (true) {
+                    // I believe you had the wrong menu here, correct it as per your requirements
+                    System.out.println("Menu for Deposit option");
+                    int choiceTwo = InputUtility.readInt();
+                    // Handle choiceTwo as needed
+                }
+
             case 3:
-                // Logic to withdraw
-                break;
+                while (true) {
+                    // I believe you had the wrong menu here, correct it as per your requirements
+                    System.out.println("Menu for Withdraw option");
+                    int choiceThree = InputUtility.readInt();
+                    // Handle choiceThree as needed
+                }
             case 4:
                 // Logic to print statement
-                break;
             case 5:
                 System.out.println("Exiting...");
                 System.exit(0);
@@ -48,4 +73,4 @@ public class BankingApp {
                 System.out.println("Invalid choice. Please try again.");
         }
     }
-}
+    }

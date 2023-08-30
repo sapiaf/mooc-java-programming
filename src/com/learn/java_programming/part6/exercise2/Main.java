@@ -17,7 +17,7 @@ public class Main {
         s.add("3");
         s.add("4");
         s.add("5");
-
+        System.out.println(s.values());
         while (!s.isEmpty()) {
             System.out.println(s.take());
         }

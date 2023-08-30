@@ -17,50 +17,39 @@ public class Money {
     public int cents() {
         return cents;
     }
-    @Override
+
     public String toString() {
         String zero = "";
-        if (cents <= 10) {
+        if (cents < 10) {
             zero = "0";
         }
 
         return euros + "." + zero + cents + "e";
     }
-
     public Money plus(Money addition) {
-        Money newMoney = new Money(this.euros + addition.euros, this.cents + addition.cents);
-        return newMoney;
-    }
+        int euros = euros() + addition.euros();
+        int cents = cents() + addition.cents();
 
-    public Money minus(Money decreaser) {
-        int newEuros = this.euros - decreaser.euros();
-        int newCents = this.cents - decreaser.cents();
-
-        if (newCents < 0) {
-            newEuros--;
-            newCents += 100;
+        if (cents > 100) {
+            euros++;
+            cents -= 100;
         }
-
-        if (newEuros < 0) {
-            newEuros = 0;
-            newCents = 0;
-        }
-
-        return new Money(newEuros, newCents);
+        return new Money(euros, cents);
     }
 
     public boolean lessThan(Money compared) {
-        if (this.euros < compared.euros()) {
-            return true;
-        }
-
-        if (this.euros == compared.euros() && this.cents < compared.cents()) {
-            return true;
-        }
-
-        return false;
+        if (euros < compared.euros()) return true;
+        return euros == compared.euros() && cents < compared.cents();
     }
-
-
+    public Money minus(Money decreaser) {
+        int euros = euros() - decreaser.euros();
+        int cents = cents() - decreaser.cents();
+        if (cents < 0) {
+            cents += 100;
+            euros--;
+        }
+        if (euros < 0) return new Money(0, 0);
+        return new Money(euros, cents);
+    }
 
 }

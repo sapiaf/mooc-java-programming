@@ -3,39 +3,36 @@ package com.learn.java_programming.part6.exercise10;
 import java.util.Scanner;
 
 public class UserInterface {
-    private ToDoList todo;
+    private TodoList todo;
     private Scanner scanner;
 
-    public UserInterface(ToDoList todo, Scanner scanner) {
+    public UserInterface(TodoList todo, Scanner scanner) {
         this.todo = todo;
         this.scanner = scanner;
     }
-
     public void start() {
         while (true) {
             System.out.println("Command: ");
-            String choice = scanner.nextLine();
-
-            if (choice.equalsIgnoreCase("stop")) {
-                break;
-            } else if (choice.equalsIgnoreCase("add")) {
-                System.out.print("To add: ");
-                String task = scanner.nextLine();
-                todo.add(task);
-            } else if (choice.equalsIgnoreCase("list")) {
-                todo.print();
-            } else if (choice.equalsIgnoreCase("remove")) {
-                System.out.print("Which one is removed? ");
-                try {
-                    int taskIndex = Integer.parseInt(scanner.nextLine());
-                    todo.remove(taskIndex);
-                } catch (NumberFormatException e) {
-                    System.out.println("Please enter a valid number.");
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println("Invalid task number.");
-                }
-            } else {
-                System.out.println("Unknown Command");
+            String choice = scanner.nextLine().toLowerCase();
+            switch (choice) {
+                case "stop":
+                    return;
+                case "add":
+                    System.out.println("To add: ");
+                    String task = scanner.nextLine();
+                    todo.add(task);
+                    break;
+                case "list":
+                    todo.print();
+                    break;
+                case "remove":
+                    System.out.println("Which one is removed? ");
+                    int index = Integer.parseInt(scanner.nextLine());
+                    todo.remove(index);
+                    break;
+                default:
+                    System.out.println("Invalid command");
+                    break;
             }
         }
     }

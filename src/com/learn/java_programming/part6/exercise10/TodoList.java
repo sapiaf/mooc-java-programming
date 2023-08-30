@@ -3,26 +3,24 @@ package com.learn.java_programming.part6.exercise10;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToDoList {
+public class TodoList {
     private List<String> list;
 
-    public ToDoList() {
+    public TodoList() {
         this.list = new ArrayList<>();
     }
-
-    public void add(String task) {
+    public void add(String task){
         list.add(task);
     }
-
-    public void remove(int index) {
-        list.remove(index - 1);
-    }
-
     public void print() {
         for (int i = 0; i < list.size(); i++) {
-            int index = i + 1;
-            System.out.println(index + ": " + list.get(i));
+            System.out.println(i + 1 + ": " + list.get(i));
         }
     }
+
+    public void remove(int number) {
+        list.remove(number - 1);
+    }
+
 
 }
