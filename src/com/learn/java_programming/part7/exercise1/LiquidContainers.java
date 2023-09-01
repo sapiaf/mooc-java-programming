@@ -10,45 +10,43 @@ public class LiquidContainers {
         int secondContainer = 0;
 
         while (true) {
-            System.out.print("First: " + firstContainer + "/100\n" + "Second: " + secondContainer + "/100 \n");
-            String userInput = scanner.nextLine();
+            System.out.println("First: " + firstContainer + "/100\nSecond: " + secondContainer + "/100");
 
-            if (userInput.equals("quit")) {
-                break;
+            String choice = scanner.nextLine();
+            if (choice.isEmpty() || choice.equalsIgnoreCase("quit")) break;
+
+            try {
+                String[] splittedChoice = choice.split(" ");
+                String command = splittedChoice[0];
+                int amount = Integer.parseInt(splittedChoice[1]);
+
+                if (amount <=  0) {
+                    System.out.println("Amount should be greater than 0.");
+                    continue;
+                }
+
+                switch (command) {
+                    case "add":
+                        firstContainer = Math.min(firstContainer + amount, 100);
+                        break;
+                    case "move":
+                        firstContainer = Math.max(firstContainer - amount, 0);
+                        secondContainer = Math.min(secondContainer + amount, 100);
+                        break;
+                    case "remove":
+                        secondContainer = Math.max(secondContainer - amount, 0);
+                        break;
+                    default:
+                        System.out.println("Invalid command");
+                        break;
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Invalid input format. Please provide a command followed by an amount.");
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid amount provided. Please enter a valid integer.");
             }
 
-            String[] parts = userInput.split(" ");
-            String command = parts[0];
-            int amount = Integer.parseInt(parts[1]);
 
-            if (amount < 0) continue;
-
-            switch (command) {
-                case "add":
-                    if (amount + firstContainer >= 100) firstContainer = 100;
-                    else firstContainer += amount;
-                    break;
-                case "move":
-                    if (amount <= firstContainer) {
-                        if (amount + secondContainer >= 100) {
-                            int spaceInSecondContainer = 100 - secondContainer;
-                            int actualMoveAmount = Math.min(amount, spaceInSecondContainer);
-                            firstContainer -= amount;
-                            secondContainer += actualMoveAmount;
-                        }
-                        else {
-                            int amountToMove = firstContainer;
-                            secondContainer += amountToMove;
-                            if (secondContainer > 100) secondContainer = 100;
-                            firstContainer = 0;
-                        }
-                    }
-                break;
-                case "remove":
-                    if (amount > secondContainer) secondContainer = 0;
-                    else secondContainer -= amount;
-                    break;
-            }
         }
     }
 }
