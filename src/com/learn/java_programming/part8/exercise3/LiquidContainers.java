@@ -1,15 +1,16 @@
-package com.learn.java_programming.part7.exercise2;
+package com.learn.java_programming.part8.exercise3;
 
 import java.util.Scanner;
 
-public class LiquidContainers2 {
+public class LiquidContainers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Container firstContainer = new Container();
-        Container secondContainer = new Container();
+
+        int firstContainer = 0;
+        int secondContainer = 0;
 
         while (true) {
-            System.out.println("First: " + firstContainer + "\n" + "Second: " + secondContainer);
+            System.out.println("First: " + firstContainer + "/100\nSecond: " + secondContainer + "/100");
 
             String choice = scanner.nextLine();
             if (choice.isEmpty() || choice.equalsIgnoreCase("quit")) break;
@@ -19,21 +20,21 @@ public class LiquidContainers2 {
                 String command = splittedChoice[0];
                 int amount = Integer.parseInt(splittedChoice[1]);
 
-                if (amount <=  0) {
+                if (amount <= 0) {
                     System.out.println("Amount should be greater than 0.");
                     continue;
                 }
 
                 switch (command) {
                     case "add":
-                        firstContainer.add(amount);
+                        firstContainer = Math.min(firstContainer + amount, 100);
                         break;
                     case "move":
-                        firstContainer.remove(amount);
-                        secondContainer.add(amount);
+                        firstContainer = Math.max(firstContainer - amount, 0);
+                        secondContainer = Math.min(secondContainer + amount, 100);
                         break;
                     case "remove":
-                        secondContainer.remove(amount);
+                        secondContainer = Math.max(secondContainer - amount, 0);
                         break;
                     default:
                         System.out.println("Invalid command");

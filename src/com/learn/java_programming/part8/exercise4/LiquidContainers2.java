@@ -1,4 +1,4 @@
-package com.learn.java_programming.part7.exercise2;
+package com.learn.java_programming.part8.exercise4;
 
 import java.util.Scanner;
 

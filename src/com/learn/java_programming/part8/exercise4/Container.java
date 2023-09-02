@@ -1,4 +1,4 @@
-package com.learn.java_programming.part7.exercise2;
+package com.learn.java_programming.part8.exercise4;
 
 public class Container {
     private int amount;
@@ -7,9 +7,14 @@ public class Container {
         this.amount = 0;
     }
 
-    public int contains() {
-        return amount;
+    private boolean isValidAmount(int amount) {
+        return amount > 0;
     }
+
+    public int contains() {
+        return this.amount;
+    }
+
     public void add(int amount) {
         if (isValidAmount(amount)) {
             this.amount = Math.min(this.amount + amount, 100);
@@ -22,12 +27,8 @@ public class Container {
         }
     }
 
-    private boolean isValidAmount(int amount) {
-        return amount > 0;
-    }
-
     @Override
     public String toString() {
-        return amount + "/100";
+        return this.amount + "/100";
     }
 }
