@@ -19,7 +19,6 @@ public class IndexOf {
 
         System.out.println("Search for: ");
         int num = Integer.parseInt(scanner.nextLine());
-
         for (int i = 0; i < nums.size(); i++) {
             if (nums.get(i) == num) System.out.println(num + " is at index " + i);
         }

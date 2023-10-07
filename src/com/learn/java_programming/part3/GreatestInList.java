@@ -10,14 +10,14 @@ public class GreatestInList {
         List<Integer> nums = new ArrayList<>();
 
         while (true) {
-            int num = Integer.valueOf(scanner.nextLine());
+            int num = Integer.parseInt(scanner.nextLine());
             if (num == -1) {
                 break;
             }
             nums.add(num);
         }
-        int start = Integer.valueOf(scanner.nextLine());
-        int end = Integer.valueOf(scanner.nextLine());
+        int start = Integer.parseInt(scanner.nextLine());
+        int end = Integer.parseInt(scanner.nextLine());
         for (int i = start; i < end; i++) {
             System.out.println(nums.get(i));
         }

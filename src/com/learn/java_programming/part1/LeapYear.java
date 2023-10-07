@@ -5,12 +5,20 @@ import java.util.Scanner;
 public class LeapYear {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int year = Integer.valueOf(scanner.nextLine());
+        int year = Integer.parseInt(scanner.nextLine());
 
-        if (year % 4 != 0 || (year % 100 == 0 && year % 400 != 0)) {
-            System.out.println("not a leap year");
+        // SOLUTION
+        if (year % 4 != 0 || (year % 100 == 0 && year % 400 != 0)) System.out.println("The year is not a leap year.");
+        else System.out.println("The year is a leap year.");
+
+        // ALTERNATIVE SOLUTION
+        if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+            System.out.println("The year is a leap year.");
         } else {
-            System.out.println("leap year");
+            System.out.println("The year is not a leap year.");
         }
+        // TERNARY OPERATOR
+        String result = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? "The year is a leap year." : "The year is not a leap year.";
+        System.out.println(result);
     }
 }

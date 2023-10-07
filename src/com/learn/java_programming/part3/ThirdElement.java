@@ -10,7 +10,7 @@ public class ThirdElement {
         List<String> nomi = new ArrayList<>();
         while (true) {
             String nome = scanner.nextLine();
-            if (nome.equalsIgnoreCase("")){
+            if (nome.isEmpty()){
                 break;
             }
             nomi.add(nome);

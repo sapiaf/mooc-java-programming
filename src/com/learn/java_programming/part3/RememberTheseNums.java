@@ -10,7 +10,7 @@ public class RememberTheseNums {
         List<Integer> nums = new ArrayList<>();
 
         while (true) {
-            int num = Integer.valueOf(scanner.nextLine());
+            int num = Integer.parseInt(scanner.nextLine());
             if (num == -1) {
                 break;
             }

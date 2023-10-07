@@ -1,20 +1,20 @@
-package com.learn.java_programming.part8.exercise2;
+package com.learn.java_programming.part8.recap;
 
 import java.util.Scanner;
 
-public class AverageOfPositive {
+public class AverageOfPositives {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double sum = 0;
-        double count = 0;
+        int sum = 0;
+        int counter = 0;
         while (true) {
             int num = Integer.parseInt(scanner.nextLine());
             if (num == 0) break;
             if (num > 0) {
                 sum += num;
-                count++;
+                counter++;
             }
         }
-        System.out.println(count > 0 ? sum / count : "Cannot calculate the average");
+        System.out.println(counter > 0 ? sum / counter : "Cannot calculate the average");
     }
 }
