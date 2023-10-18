@@ -16,9 +16,7 @@ public class Product {
     public Product(String name, String location) {
         this(name, location, 1);
     }
-    public Product(String name, int weight) {
-        this(name, "shelf", weight);
-    }
+    public Product(String name, int weight) { this(name, "shelf", weight);}
 
     @Override
     public String toString() {
