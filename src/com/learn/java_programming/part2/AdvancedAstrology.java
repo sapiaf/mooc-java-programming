@@ -2,27 +2,38 @@ package com.learn.java_programming.part2;
 
 public class AdvancedAstrology {
     public static void main(String[] args) {
-        printTree(4);
+        christmasTree(6);
     }
     public static void printSpaces(int number) {
         for (int i = 0; i < number; i++) {
             System.out.print(" ");
         }
     }
-    public static void printTriangle(int height) {
-        for (int i = 0; i <= height; i++) {
-            printSpaces(height - i);
-            StarSign.printStars(i);
+    public static void printStars(int number) {
+        for (int i = 0; i < number; i++) {
+            System.out.print("*");
         }
     }
-    public static void printTree(int height) {
-        for (int i = 0; i <= height; i++) {
+    public static void printTriangle(int size) {
+        for (int i = 1; i <= size; i++) {
+            printSpaces(size - i);
+            printStars(i);
+            System.out.println();
+        }
+    }
+    public static void christmasTree(int height) {
+        for (int i = 1; i <= height; i++) {
             printSpaces(height - i);
-            StarSign.printStars(i + i - 1);
+            printStars(i);
+            printStars(i - 1);
+            System.out.println();
         }
         for (int i = 0; i < 2; i++) {
             printSpaces(height - 2);
-            StarSign.printStars(3);
+            printStars(3);
+            System.out.println();
+
         }
     }
+
 }

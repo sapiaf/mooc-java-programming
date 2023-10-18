@@ -21,24 +21,16 @@ public class SportStatistics {
         try (Scanner sc = new Scanner(Paths.get("src/com/learn/java_programming/part4/exercise30/" + fileName))) {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
-                if (line.isEmpty()) continue;
-
-                String[] splitted = line.split(",");
-                String homeTeam = splitted[0];
-                String awayTeam = splitted[1];
-                int homePoints = Integer.parseInt(splitted[2]);
-                int awayPoints = Integer.parseInt(splitted[3]);
-
-                if (homeTeam.equalsIgnoreCase(teamName)) {
-                    if (homePoints > awayPoints) wins++;
-                    else losses++;
+                String[] strings = line.split(",");
+                if (strings[0].equalsIgnoreCase(teamName)) {
                     gamesCounter++;
+                    if (Integer.parseInt(strings[2]) > Integer.parseInt(strings[3])) wins++;
+                    else losses++;
                 }
-
-                if (awayTeam.equalsIgnoreCase(teamName)) {
-                    if (homePoints < awayPoints) wins++;
-                    else losses++;
+                if (strings[1].equalsIgnoreCase(teamName)) {
                     gamesCounter++;
+                    if (Integer.parseInt(strings[3]) > Integer.parseInt(strings[2])) wins++;
+                    else losses++;
                 }
 
             }

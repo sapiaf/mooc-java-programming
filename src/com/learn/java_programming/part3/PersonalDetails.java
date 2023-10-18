@@ -13,21 +13,16 @@ public class PersonalDetails {
             System.out.println("Enter a name and birth year separated by a comma (or press enter to quit):");
             String input = scanner.nextLine();
 
-            if (input.trim().isEmpty()) {
+            if (input.isEmpty()) {
                 break;
             }
-
-            String[] parts = input.split(",");
-
-            String name = parts[0].trim();
-            int birthYear = Integer.parseInt(parts[1].trim());
-
-            if (name.length() > longestName.length()) {
-                longestName = name;
-            }
-
-            totalBirthYears += birthYear;
             count++;
+            String[] strings = input.split(",");
+            String name = strings[0];
+            int age = Integer.parseInt(strings[1]);
+            totalBirthYears += age;
+            if (name.length() > longestName.length()) longestName = name;
+
         }
 
         System.out.println("Longest name: " + longestName);
