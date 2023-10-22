@@ -8,31 +8,10 @@ import java.util.Comparator;
 public class MainProgram {
 
     public static void main(String[] args) {
-        int[] numbers = {3, 2, 5, 4, 8};
+        int[] numbers = {8, 3, 7, 9, 1, 2, 4};
         try {
-            System.out.println("Original array: " + Arrays.toString(numbers));
-
-            System.out.println("\nFinding the smallest value in the array:");
-            System.out.println("Smallest: " + MainProgram.smallest(numbers));
-
-            System.out.println("\nFinding the index of the smallest value in the array:");
-            System.out.println("Smallest Index: " + MainProgram.indexOfSmallest(numbers));
-
-            System.out.println("\nFinding the index of the smallest value from index 1 onwards:");
-            System.out.println("Smallest Index from 1: " + MainProgram.indexOfSmallestFrom(numbers, 2));
-
-            System.out.println("\nSwapping elements at index 1 and 0:");
-            MainProgram.swap(numbers, 1, 0);
-            System.out.println("After swap: " + Arrays.toString(numbers));
-
-            System.out.println("\nSwapping elements at index 0 and 3:");
-            MainProgram.swap(numbers, 0, 3);
-            System.out.println("After swap: " + Arrays.toString(numbers));
-
-            System.out.println("\nSorting the array using selection sort:");
             MainProgram.sort(numbers);
-            System.out.println("Sorted array: " + Arrays.toString(numbers));
-
+            System.out.println(Arrays.toString(numbers));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -45,6 +24,7 @@ public class MainProgram {
     private static void checkIndex(int[] array, int index) {
         if (index < 0 || index >= array.length) throw new IllegalArgumentException("Index out of bounds.");
     }
+
     public static int smallest(int[] array){
         checkArray(array);
         int min = array[0];
@@ -53,42 +33,40 @@ public class MainProgram {
         }
         return min;
     }
-
-    public static int indexOfSmallest(int[] array) {
+    public static int indexOfSmallest(int[] array){
         checkArray(array);
         int index = 0;
+        int min = array[0];
         for (int i = 1; i < array.length; i++) {
-            if (array[i] < array[index]) index = i;
+            if (array[i] < min) {
+                index = i;
+            }
         }
         return index;
     }
-
-    public static int indexOfSmallestFrom(int[] array, int startIndex) {
-        checkArray(array);
-        checkIndex(array, startIndex);
+    public static int indexOfSmallestFrom(int[] table, int startIndex) {
+        checkIndex(table, startIndex);
+        int min = table[startIndex];
         int index = startIndex;
-        for (int i = startIndex + 1; i < array.length; i++) {
-            if (array[i] < array[index]) index = i;
+        for (int i = startIndex + 1; i < table.length; i++) {
+            if (table[i] < min) {
+                min = table[i];
+                index = i;
+            }
         }
         return index;
     }
-
     public static void swap(int[] array, int index1, int index2) {
-        checkArray(array);
-        checkIndex(array, index1);
-        checkIndex(array, index2);
-        int temporary = array[index1];
+        int helper = array[index1];
         array[index1] = array[index2];
-        array[index2] = temporary;
+        array[index2] = helper;
     }
-
     public static void sort(int[] array) {
         checkArray(array);
         for (int i = 0; i < array.length; i++) {
             swap(array, i, indexOfSmallestFrom(array, i));
         }
     }
-
     public static void sort(String[] array) {
         Arrays.sort(array);
     }

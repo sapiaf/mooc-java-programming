@@ -1,6 +1,7 @@
 package com.learn.java_programming.part7.exercise4;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 public class Searching {
     public static void main(String[] args) {
@@ -43,25 +44,20 @@ public class Searching {
 
 
     public static int linearSearch(ArrayList<Book> books, int searchedId) {
-        int index = 0;
-        for (Book book : books) {
-            if (book.getId() == searchedId) {
-                return index;
-            }
-            index++;
+        for (int i = 0; i < books.size(); i++) {
+          if (books.get(i).getId() == searchedId) return i;
         }
         return -1;
     }
 
     public static int binarySearch(ArrayList<Book> books, int searchedId) {
-        int start = 0;
+        int begin = 0;
         int end = books.size() - 1;
-
-        while (start <= end) {
-            int middle = start + end / 2;
+        while (begin <= end) {
+            int middle = (end + begin) / 2;
             if (books.get(middle).getId() == searchedId) return middle;
-            else if(books.get(middle).getId() < searchedId) start = middle + 1;
-            else if (books.get(middle).getId() > searchedId) end = middle - 1;
+            if (books.get(middle).getId() < searchedId) begin = middle + 1;
+            if (books.get(middle).getId() > searchedId) end = middle - 1;
         }
         return -1;
     }
