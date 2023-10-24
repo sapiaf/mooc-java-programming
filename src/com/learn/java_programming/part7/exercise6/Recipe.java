@@ -1,5 +1,4 @@
 package com.learn.java_programming.part7.exercise6;
-
 import java.util.ArrayList;
 
 public class Recipe {

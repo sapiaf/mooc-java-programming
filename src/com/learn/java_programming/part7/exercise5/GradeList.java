@@ -2,43 +2,39 @@ package com.learn.java_programming.part7.exercise5;
 
 import java.util.ArrayList;
 
-public class GradeBook {
+public class GradeList {
     private ArrayList<Integer> grades;
-    public GradeBook() {
+
+    public GradeList() {
         this.grades = new ArrayList<>();
     }
-    public void addGrade(int gradeToAdd) {
-        if (gradeToAdd >= 0 && gradeToAdd <= 100) this.grades.add(gradeToAdd);
-    }
 
+    public void addGrade(int grade) {
+        if (grade >= 0 && grade <= 100) grades.add(grade);
+    }
     public double average() {
         double sum = 0;
-        for (int grade : this.grades) {
+        for (int grade : grades) {
             sum += grade;
         }
-        return sum / this.grades.size();
+        return sum / grades.size();
     }
-
     public double average(int passingNum) {
         double sum = 0;
-        int count = 0;
-        for (int grade : this.grades) {
+        for (int grade : grades) {
             if (grade >= passingNum) {
                 sum += grade;
-                count++;
             }
         }
-        return count == 0 ? 0 : sum / count;
+        return sum == 0 ? 0 : sum / grades.size();
     }
-
-    public double passingPercentage() {
+    public double passingPercentage(int passingNum) {
         double count = 0;
-        for (int grade : this.grades) {
-            if (grade >= 50) count++;
+        for (int grade : grades) {
+            if (grade >= passingNum) count++;
         }
-        return 100 * (count / this.grades.size());
+        return 100 * (count / grades.size());
     }
-
     private int gradeToPoints(int point) {
         if (point < 50) return 0;
         if (point < 60) return 1;
@@ -66,6 +62,5 @@ public class GradeBook {
             System.out.println();
         }
     }
-
 
 }

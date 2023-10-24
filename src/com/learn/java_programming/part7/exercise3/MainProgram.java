@@ -44,29 +44,35 @@ public class MainProgram {
         }
         return index;
     }
+
     public static int indexOfSmallestFrom(int[] table, int startIndex) {
         checkIndex(table, startIndex);
+
         int min = table[startIndex];
-        int index = startIndex;
+        int minIndex = startIndex;
+
         for (int i = startIndex + 1; i < table.length; i++) {
             if (table[i] < min) {
                 min = table[i];
-                index = i;
+                minIndex = i;
             }
         }
-        return index;
+
+        return minIndex;
     }
+
     public static void swap(int[] array, int index1, int index2) {
         int helper = array[index1];
         array[index1] = array[index2];
         array[index2] = helper;
     }
+
     public static void sort(int[] array) {
-        checkArray(array);
         for (int i = 0; i < array.length; i++) {
             swap(array, i, indexOfSmallestFrom(array, i));
         }
     }
+
     public static void sort(String[] array) {
         Arrays.sort(array);
     }

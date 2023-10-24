@@ -4,15 +4,15 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RecipeSearch {
+public class Main {
     public static void main(String[] args) {
-        RecipeBook recipeBook = new RecipeBook();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("File to read:");
+        RecipeBook recipeBook = new RecipeBook();
+        System.out.println("File to read: ");
         String fileName = scanner.nextLine();
         ArrayList<String> fileLines = new ArrayList<>();
 
-        try (Scanner scanner1 = new Scanner(Paths.get(fileName))){
+        try (Scanner scanner1 = new Scanner(Paths.get(fileName))) {
             while (scanner1.hasNextLine()) {
                 String line = scanner1.nextLine();
                 if (line.isEmpty() || !scanner1.hasNextLine()) {
@@ -25,17 +25,14 @@ public class RecipeSearch {
                     recipeBook.addRecipe(new Recipe(recipeName, preparationTime, ingredientsList));
                     fileLines.removeAll(fileLines);
                 } else {
-                    fileLines.add(line);
+                   fileLines.add(line);
                 }
             }
-
         } catch (Exception e) {
             System.out.println("Error reading file " + e.getMessage());
         }
 
-        TextInterface textInterface = new TextInterface(scanner, recipeBook);
-        textInterface.start();
-
+        TextUI textUI = new TextUI(recipeBook, scanner);
+        textUI.start();
     }
-
 }

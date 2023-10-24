@@ -10,80 +10,44 @@ public class RecipeBook {
     }
 
     public void addRecipe(Recipe recipe) {
-        this.recipes.add(recipe);
-
-    }
-
-    //way easier to just print from the recipe like this with a void method
-    // i tried to return an object at first then print it in the UI but it became very messy
-    public void printByName(String name) {
-
-        if (this.recipes.isEmpty()) {
-
-            System.out.println("None found");
-        } else {
-            for (Recipe e : this.recipes) {
-
-                //lowercases both so regradless of case
-                if (e.getName().toLowerCase().contains(name.toLowerCase())) {
-                    System.out.println(e);
-
-                }
-
-            }
-
-        }
-
-    }
-
-    public void printByTime(String time) {
-
-        if (this.recipes.isEmpty()) {
-
-            System.out.println("None found");
-        } else {
-            for (Recipe e : this.recipes) {
-
-                //lower caseing both so it finds it regradless of case
-                if (e.getTime() <= Integer.valueOf(time)) {
-
-                    System.out.println(e);
-
-                }
-
-            }
-
-        }
-
-    }
-
-    public void printByIngredient(String ingredient) {
-
-        if (this.recipes.isEmpty()) {
-
-            System.out.println("None found");
-        } else {
-            for (Recipe e : this.recipes) {
-
-                //lower caseing both so it finds it regradless of case
-                if (e.getIngredients().contains(ingredient.toLowerCase())) {
-
-                    System.out.println(e);
-
-                }
-
-            }
-
-        }
-
+        recipes.add(recipe);
     }
 
     public void printRecipeBook() {
-
-        for (Recipe e : this.recipes) {
-            System.out.println(e);
-
+        System.out.println("Recipes:");
+        for (Recipe recipe : recipes) {
+            System.out.println(recipe);
         }
+    }
 
+    public void printByName(String name) {
+        System.out.println("Recipes with the name '" + name + "':");
+        for (Recipe recipe : recipes) {
+            if (recipe.getName().equalsIgnoreCase(name)) {
+                System.out.println(recipe);
+            }
+        }
+    }
+
+    public void printByTime(int time) {
+        System.out.println("Recipes with cooking time less than or equal to " + time + " minutes:");
+        for (Recipe recipe : recipes) {
+            if (recipe.getTime() <= time) {
+                System.out.println(recipe);
+            }
+        }
+    }
+
+    public void printByIngredient(String ingredient) {
+        System.out.println("Recipes containing '" + ingredient + "':");
+        for (Recipe recipe : recipes) {
+            ArrayList<String> ingredients = recipe.getIngredients();
+            for (String item : ingredients) {
+                if (item.contains(ingredient)) {
+                    System.out.println(recipe);
+                    break;
+                }
+            }
+        }
     }
 }
