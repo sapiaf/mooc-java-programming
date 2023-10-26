@@ -1,7 +1,6 @@
 package com.learn.java_programming.part8.hashmap;
 
 import java.util.HashMap;
-import java.util.Set;
 
 public class Program {
     public static void main(String[] args) {
@@ -15,25 +14,22 @@ public class Program {
         printKeysWhere(hashmap, "i");
         System.out.println("---");
         printValuesOfKeysWhere(hashmap, ".e");
-        // Test your program here!
-
     }
     public static void printKeys(HashMap<String,String> hashmap) {
-        Set<String> keys = hashmap.keySet();
-        for (String key : keys) {
+        for (String key : hashmap.keySet()) {
             System.out.println(key);
         }
     }
     public static void printKeysWhere(HashMap<String,String> hashmap, String text) {
-        Set<String> keys = hashmap.keySet();
-        for (String key : keys) {
+        for (String key : hashmap.keySet()) {
             if (key.contains(text)) System.out.println(key);
         }
     }
     public static void printValuesOfKeysWhere(HashMap<String,String> hashmap, String text) {
-        Set<String> keys = hashmap.keySet();
-        for (String key : keys) {
-            if (key.contains(text)) System.out.println(hashmap.get(key));
+        for (String key : hashmap.keySet()) {
+            if (key.contains(text)) {
+                System.out.println(hashmap.get(key));
+            }
         }
     }
 }

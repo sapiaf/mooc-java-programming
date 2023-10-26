@@ -36,6 +36,14 @@ public class LicensePlate {
         this.country = country;
     }
 
+    public String getLiNumber() {
+        return liNumber;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
     @Override
     public String toString() {
         return country + " " + liNumber;

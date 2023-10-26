@@ -36,22 +36,32 @@ public class StorageFacility {
         facility.get(unit).add(item);
     }
     public ArrayList<String> contents(String storageUnit) {
-        return facility.get(storageUnit) != null ? facility.get(storageUnit) : new ArrayList<>();
+        ArrayList<String> contents = facility.get(storageUnit);
+        if (contents == null) {
+            return new ArrayList<>();
+        }
+        return contents;
     }
 
 
     public void remove(String storageUnit, String item) {
-        ArrayList<String> items = facility.get(storageUnit);
-        if (items != null) {
-            items.remove(item);
-            if (items.isEmpty()) {
+        ArrayList<String> contents = facility.get(storageUnit);
+        if (contents != null) {
+            contents.remove(item);
+
+            if (contents.isEmpty()) {
                 facility.remove(storageUnit);
             }
         }
     }
 
     public ArrayList<String> storageUnits() {
-        ArrayList<String> list = new ArrayList<>(facility.keySet());
-        return list;
+        ArrayList<String> nonEmptyUnits = new ArrayList<>();
+        for (String unit : facility.keySet()) {
+            if (!facility.get(unit).isEmpty()) {
+                nonEmptyUnits.add(unit);
+            }
+        }
+        return nonEmptyUnits;
     }
 }

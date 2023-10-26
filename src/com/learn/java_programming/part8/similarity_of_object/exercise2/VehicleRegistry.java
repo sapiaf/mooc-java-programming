@@ -16,9 +16,11 @@ public class VehicleRegistry {
         }
         return false;
     }
+
     public String get(LicensePlate licensePlate) {
-        return licensePlates.get(licensePlate);
+        return licensePlates.getOrDefault(licensePlate, null);
     }
+
     public boolean remove(LicensePlate licensePlate) {
         if (licensePlates.get(licensePlate) != null) {
             licensePlates.remove(licensePlate);
@@ -26,15 +28,16 @@ public class VehicleRegistry {
         }
         return false;
     }
+
     public void printLicensePlates() {
         for (LicensePlate licensePlate : licensePlates.keySet()) {
             System.out.println(licensePlate);
         }
     }
+
     public void printOwners() {
         for (String owner : licensePlates.values()) {
             System.out.println(owner);
         }
     }
-
 }
