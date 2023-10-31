@@ -1,6 +1,5 @@
 package com.learn.java_programming.part10.exercise9;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
